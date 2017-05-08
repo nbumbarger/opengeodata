@@ -1,0 +1,17 @@
+.page__footer {
+  @include column(12/12);
+  background-color: $base-color;
+  padding: ($global-spacing * 2) 0;
+}
+
+.copyright {
+  @include column(12/12);
+  @include media(medium-up) {
+    @include column(6/12);
+  }
+  p {
+    margin-bottom: 0;
+    color: rgba($tertiary-color, .66);
+    font-size: 0.75rem;
+  }
+}

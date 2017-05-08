@@ -17,9 +17,9 @@
   "homepage": "https://github.com/nbumbarger/opengeodata",
   "scripts": {
     "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo \"'use strict'\n\nexport default {\n  environment: 'development'\n}\" > app/assets/scripts/config/local.js",
-    "serve": "ENV=development gulp serve",
-    "build": "ENV=production NODE_ENV=production gulp",
-    "stage": "ENV=staging NODE_ENV=staging gulp",
+    "serve": "gulp collecticons && ENV=development gulp serve",
+    "build": "gulp collecticons && ENV=production NODE_ENV=production gulp",
+    "stage": "gulp collecticons && ENV=staging NODE_ENV=staging gulp",
     "lint": "eslint app/assets/scripts/ --ext .js",
     "test": "echo \"No tests\" && exit 0"
   },
@@ -45,6 +45,7 @@
     "babelify": "^7.3.0",
     "browser-sync": "^2.18.8",
     "browserify": "^14.1.0",
+    "collecticons-processor": "^3.1.0",
     "del": "^2.2.2",
     "envify": "^4.0.0",
     "eslint": "^3.18.0",
@@ -68,6 +69,7 @@
     "gulp-uglify": "^2.1.2",
     "gulp-useref": "^3.1.2",
     "gulp-util": "^3.0.8",
+    "jeet": "^7.1.0",
     "node-bourbon": "^4.2.8",
     "node-notifier": "^5.1.2",
     "node-sass": "^4.5.1",

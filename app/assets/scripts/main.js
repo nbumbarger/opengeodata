@@ -37,6 +37,8 @@ render((
     <Router history={hashHistory} render={applyRouterMiddleware(scrollerMiddleware)}>
       <Route path='/' component={App}>
         <IndexRoute component={Home} pageClass='page--homepage' />
+        {/* <Route path='about' component={About} />
+        <Route path='contribute' component={Contribute} /> */}
         <Route path='*' component={UhOh} />
       </Route>
     </Router>

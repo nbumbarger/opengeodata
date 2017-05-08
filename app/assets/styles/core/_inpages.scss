@@ -1,0 +1,242 @@
+.negative {
+	background-color: rgba($primary-color, 0.7);
+	color: $base-color;
+}
+
+.negative--alt {
+  background-color: tint($primary-color, 20%);
+  color: $base-color;
+  h1 {
+    color: $secondary-color;
+  }
+}
+
+.negative--deco {
+  background-color: $primary-color;
+  color: $base-color;
+  border-top: solid 2px $secondary-color;
+}
+
+.inpage {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+
+  &__header {
+    @include linear-gradient(to bottom, rgba($primary-color, 0.9) 0%, rgba($primary-color, 0.7) 70%, rgba($primary-color, 0.1) 100%, $fallback: transparent);
+    padding: ($global-spacing * 4) 0;
+    position: absolute;
+    top: 0;
+    color: $base-color;
+    transition: top 0.8s ease 0s;
+    @include column(12/12);
+    @include media(xsmall-only) {
+      position: static;
+      padding: $global-spacing 0;
+      h1 {
+        font-size: 1.75rem;
+        line-height: 2rem;
+      }
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+  &__body {
+    @include column(12/12);
+    float: left;
+    position: relative;
+    z-index: -999;
+    transition: top 0.8s ease 0s;
+  }
+  &__title {
+    @include column(12/12);
+    @include media(medium-up) {
+      @include column(9/12);
+    }
+  }
+  &__introduction {
+    @include column(12/12);
+    @include media(medium-up) {
+      @include column(9/12);
+    }
+  }
+  &__content {
+    @include column(12/12);
+    @include media(medium-up) {
+      @include column(9/12);
+    }
+  }
+  &__actions {
+    a {
+      margin-right: $global-spacing;
+    }
+  }
+  &__section {
+    @include column(12/12);
+    position: relative;
+  }
+}
+
+.inpage.index {
+  .inpage__introduction {
+    @include media(medium-up) {
+      @include column(7/12);
+    }
+  }
+}
+
+.inpage__subheader {
+  background-color: rgba($primary-color, 0.6);
+  height: 0;
+  position: absolute;
+  top: 0;
+  padding-top: $global-spacing/4;
+  @include column(12/12);
+  transition: height 0.8s ease 0s;
+  .timeline__context {
+    opacity: 0;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    @include column(12/12);
+    transition: opacity 0.4s ease 0s;
+  }
+  a {
+    float: left;
+    opacity: 0;
+      span {
+        padding-bottom: $global-spacing/8;
+      }
+    @include media(medium-up) {
+      float: right;
+    }
+    transition: opacity 0.4s ease 0s;
+  }
+  @include media(xsmall-only) {
+    position: static;
+    border-top: solid 1px $secondary-color;
+  }
+}
+
+.inpage__subheader--active {
+  height: auto;
+  .timeline__context {
+    opacity: 1;
+  }
+  a {
+    opacity: 1;
+  }
+}
+
+.inpage__header--active {
+  top: -500px;
+}
+
+.inpage__body--active {
+ /* top: 0px;*/
+}
+
+.inpage__section--alt {
+  @include column(12/12);
+  text-align: center;
+  padding: ($global-spacing * 4) 0;
+}
+
+.compare-time {
+  color: $primary-color;
+  margin-bottom: 4rem;
+}
+
+.section__description {
+  @include center(650px);
+}
+
+.card__container {
+  @include column(12/12);
+  margin: ($global-spacing * 2) 0;
+}
+
+.card__container--full {
+  @include column(12/12);
+  margin-top: 4rem;
+  margin-bottom: 0;
+  background-color: $base-color;
+  padding: ($global-spacing * 4) ($global-spacing * 3);
+  @include media(xsmall-only) {
+    padding: ($global-spacing * 2);
+  }
+  border-top: solid 6px $secondary-color;
+  border-bottom: solid 6px tint($tertiary-color, 70%);
+  &:first-child {
+    margin-right: $global-spacing;
+  };
+  color: $tertiary-color;
+  h1 {
+    color: $secondary-color;
+  }
+  article {
+    @include column(12/12);
+    @include media(medium-up) {
+      @include column(10/12);
+    }
+  }
+}
+
+.card {
+  @include column(12/12);
+  margin-bottom: $global-spacing * 2;
+  @include media(medium-up) {
+    @include column(6/12);
+    margin-bottom: 0;
+  }
+  background-color: $base-color;
+  padding: ($global-spacing * 4) ($global-spacing * 3);
+  border-top: solid 6px $secondary-color;
+  border-bottom: solid 6px tint($tertiary-color, 70%);
+  &:first-child {
+    margin-right: $global-spacing;
+  };
+  color: $tertiary-color;
+  h1 {
+    color: $secondary-color;
+  }
+}
+
+.card__subtitle {
+  font-weight: $base-font-light;
+  text-transform: uppercase;
+  position: relative;
+  padding-left: 4.5rem;
+  color: rgba($tertiary-color, 0.6);
+  font-size: 0.875rem;
+  &:before {
+    content:'';
+    height: 1px;
+    width: 60px;
+    background-color: rgba($tertiary-color, 0.4);
+    position: absolute;
+    left: 0;
+    top: 50%;
+  };
+}
+
+.card__description {
+  color: rgba($tertiary-color, 0.6);
+}
+
+.about {
+  color: $base-color;
+}
+
+.inpage__header--prose {
+  padding: ($global-spacing * 3) 0;
+  border-bottom: solid 1px $secondary-color;
+}
+
+.inpage__body--prose {
+  background-color: $primary-tint;
+  padding: ($global-spacing * 4) 0;
+  p {
+    font-weight: $base-font-light;
+  }
+}

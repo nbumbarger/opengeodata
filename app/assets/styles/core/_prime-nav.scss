@@ -1,0 +1,168 @@
+.page__header {
+  background-color: $base-color;
+    position: relative;
+    z-index: 100000;
+}
+
+.page__headline {
+  float: left;
+  padding: $global-spacing 0;
+}
+
+.page__title {
+  margin-bottom: 0;
+}
+
+.page__prime-nav {
+  float: right;
+  li {
+    display: inline-block;
+    list-style: none;
+    @include media (small-up) {
+      margin: ($global-spacing * 2.75) ($global-spacing * 2) 0 0;
+    }
+    @include media (small-up) {
+      &:last-child {
+        margin-right: 0;
+      };
+    }
+    a {
+      color: $tertiary-color;
+      margin: $global-spacing 0;
+      text-decoration: none;
+      @include media (small-up) {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.browse-menu {
+  float: right;
+  margin-top: $global-spacing/4;
+  @include media(small-up) {
+    margin-left: 0;
+    margin-top: 0;
+  }
+  margin-left: $global-spacing;
+}
+
+.browse-menu__item {
+  position: relative;
+  line-height: 0.75rem;
+  font-size: 0.875rem;
+  display: inline-block;
+  list-style: none;
+  font-weight: $base-font-light;
+}
+
+.browse-menu__item--active {
+  padding-bottom: $global-spacing/4;
+  border-bottom: solid 2px rgba($tertiary-color, 0.3);
+}
+
+#sub-nav-block-wrapper {
+  position: relative;
+}
+
+.page__prime-nav-title {
+  position: absolute;
+  color: $tertiary-color;
+  top: 1rem;
+  right: 0;
+  z-index: 4;
+  font-size: 1rem;
+  line-height: 1;
+  margin: 0;
+  padding: ($global-spacing * 1.5) $global-spacing;
+  transition: all 0.32s ease 0s;
+
+  a {
+    color: $tertiary-color;
+
+    &, *, &::after {
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    &::after {
+      @extend %collecticon-hamburger-menu;
+      margin-left: $global-spacing / 4;
+    }
+  }
+
+  .offcanvas-revealed & {
+    width: 12rem;
+    background: #fff;
+    right: 0;
+/*    box-shadow: 0 2px 0 0 $base-semi-alpha-color;*/
+
+    a::after {
+      @extend %collecticon-xmark;
+      margin-left: $global-spacing / 4;
+    }
+  }
+
+  @include media(small-up) {
+    right: $global-spacing;
+  }
+
+  @include media(small-up) {
+    display: none;
+  }
+}
+
+.nav-block {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  width: 12rem;
+  padding: ($global-spacing * 4.5) 0 0 0;
+  background: #fff;
+  overflow-y: scroll;
+  height: 100vh;
+  transition: opacity 0.16s ease 0s, right 0.16s ease 0s, visibility 0.16s linear 0s;
+
+  /* Pre animation */
+  opacity: 0;
+  visibility: hidden;
+  right: -12rem;
+
+  /* Post animation */
+  .offcanvas-revealed & {
+    opacity: 1;
+    visibility: visible;
+    right: 0;
+    box-shadow: 0 0 15px 2px rgba($primary-color, 0.2);
+  }
+
+  @include media(small-up) {
+    position: static;
+    height: auto;
+    width: auto;
+    overflow: visible;
+    opacity: 1;
+    visibility: visible;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+.offcanvas-revealed {
+  overflow-y: hidden;
+
+  @include media(small-up) {
+    overflow-y: visible;
+  }
+  @include media(xsmall-only) {
+    .page__prime-nav {
+      li {
+        margin-right: 6rem;
+        height: 1.5rem;
+        display: list-item;
+      }
+    }
+  }
+
+}

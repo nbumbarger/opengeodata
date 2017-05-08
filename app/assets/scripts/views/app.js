@@ -1,19 +1,25 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import _ from 'lodash'
 import c from 'classnames'
+
+import PageHeader from '../components/page-header'
+import PageFooter from '../components/page-footer'
 
 export class App extends React.Component {
   render () {
     const pageClass = _.get(_.last(this.props.routes), 'path')
     return (
-      <div className={c('page', pageClass)}>
-        <main className='page__body' role='main'>
-          {this.props.children}
-        </main>
-      </div>
+      <main className={c('page', pageClass)} role='main'>
+        <div className='page'>
+          <div className='page__inner'>
+            <PageHeader />
+            {this.props.children}
+            <PageFooter />
+          </div>
+        </div>
+      </main>
     )
   }
 }
@@ -23,9 +29,4 @@ App.propTypes = {
   children: PropTypes.object
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App

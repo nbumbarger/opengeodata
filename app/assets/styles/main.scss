@@ -23,11 +23,19 @@
 @import "bourbon";
 
 
+/**
+ * Jeet, a grid system designed for humans:
+ * http://jeet.gs/
+ */
+
+@import "node_modules/jeet/jeet";
+
+
 /* Reboot
    ========================================================================== */
 
-@import "normalize";
-@import "reset";
+@import "vendor/normalize";
+@import "vendor/reset";
 
 /**
  * Using Kenneth Ormandy's OpenType features—ligatures, kerning, and
@@ -35,14 +43,26 @@
  * https://github.com/kennethormandy/normalize-opentype.css
  */
 
-@import "normalize-opentype";
+@import "vendor/normalize-opentype";
+
+
+@import "vendor/collecticons";
 
 
 /* Settings
    ========================================================================== */
 
+@import "settings/variables";
+@import "settings/functions";
+@import "settings/mixins";
+
 
 /* Main
    ========================================================================== */
 
-@import "base";
+ @import "core/base";
+ @import "core/typography";
+ @import "core/utilities";
+ @import "core/prime-nav";
+ @import "core/footer";
+ @import "core/inpages";
