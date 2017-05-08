@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+- '7'
+env:
+  global:
+  - CXX=g++-4.8
+  - DEPLOY_BRANCH=master
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+cache:
+  apt: true
+  yarn: true
+  directories:
+  - node_modules
+before_install:
+- chmod +x ./.build_scripts/deploy.sh
+- chmod +x ./.build_scripts/lint.sh
+before_script:
+
+- "./.build_scripts/lint.sh"
+- yarn test
+
+script:
+- yarn run build
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: ".build_scripts/deploy.sh"
+  on:
+    branch: "${DEPLOY_BRANCH}"
