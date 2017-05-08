@@ -1,6 +1,7 @@
 'use strict'
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import _ from 'lodash'
 import c from 'classnames'
 
@@ -11,10 +12,13 @@ export class App extends React.Component {
   render () {
     const pageClass = _.get(_.last(this.props.routes), 'path')
     return (
-      <main className={c('page', pageClass)} role='main'>
+      <main className={c('page', pageClass, {'offcanvas-revealed': this.props.menuOpen})} role='main'>
         <div className='page'>
           <div className='page__inner'>
-            <PageHeader />
+            <PageHeader
+              dispatch={this.props.dispatch}
+              menuOpen={this.props.menuOpen}
+            />
             {this.props.children}
             <PageFooter />
           </div>
@@ -26,7 +30,15 @@ export class App extends React.Component {
 
 App.propTypes = {
   routes: PropTypes.array,
-  children: PropTypes.object
+  children: PropTypes.object,
+  dispatch: PropTypes.func,
+  menuOpen: PropTypes.bool
 }
 
-export default App
+const mapStateToProps = (state) => {
+  return {
+    menuOpen: state.home.menuOpen
+  }
+}
+
+export default connect(mapStateToProps)(App)

@@ -1,23 +1,17 @@
 'use strict'
 import React from 'react'
+import { updateMenuOpen } from '../actions'
+import PropTypes from 'prop-types'
 
 export class PageHeader extends React.Component {
   constructor (props, context) {
     super(props, context)
-    this.state = {
-      menuOpen: false
-    }
+    this.handleMenuClick = this.handleMenuClick.bind(this)
   }
 
-  handleNavClick (e) {
+  handleMenuClick (e) {
     e.preventDefault()
-    this.setState({menuOpen: !this.state.menuOpen})
-    if (!this.state.menuOpen) {
-      document.querySelector('html').classList.add('offcanvas-revealed')
-    }
-    if (this.state.menuOpen) {
-      document.querySelector('html').classList.remove('offcanvas-revealed')
-    }
+    this.props.dispatch(updateMenuOpen(!this.props.menuOpen))
   }
 
   render () {
@@ -30,7 +24,7 @@ export class PageHeader extends React.Component {
            </h1>
           </div>
           <nav className='page__prime-nav'>
-            <h2 className='page__prime-nav-title' onClick={(e) => this.handleNavClick(e)}>
+            <h2 className='page__prime-nav-title' onClick={(e) => this.handleMenuClick(e)}>
               <a href='#nav-block-browse'><span>Menu</span></a>
             </h2>
             <div className='nav-block' id='nav-block-browse'>
@@ -51,6 +45,11 @@ export class PageHeader extends React.Component {
       </header>
     )
   }
+}
+
+PageHeader.propTypes = {
+  dispatch: PropTypes.func,
+  menuOpen: PropTypes.bool
 }
 
 export default PageHeader
