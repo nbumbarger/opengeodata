@@ -1,5 +1,6 @@
 'use strict'
 import React from 'react'
+import thunkMiddleware from 'redux-thunk'
 import { render } from 'react-dom'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
@@ -19,6 +20,7 @@ const logger = createLogger({
 })
 
 const store = createStore(reducer, applyMiddleware(
+  thunkMiddleware,
   logger
 ))
 
