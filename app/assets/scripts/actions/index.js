@@ -1,50 +1,50 @@
 'use strict'
-import request from 'request'
-import csv from 'csvtojson'
+
+import _ from 'lodash'
 
 import config from '../config'
 
 export const UPDATE_DATA = 'UPDATE_DATA'
-export const UPDATE_DATA_LOADING = 'UPDATE_DATA_LOADING'
+export const REQUEST_DATA = 'REQUEST_DATA'
+export const RECEIVE_DATA = 'RECEIVE_DATA'
 export const UPDATE_MENU_OPEN = 'UPDATE_MENU_OPEN'
 
-// < fetch CSV data and stream to GeoJSON object
-export const updateData = (data) => {
-  return { type: UPDATE_DATA, data: data }
-}
-export const updateDataLoading = (bool) => {
-  return { type: UPDATE_DATA_LOADING, data: bool }
-}
+export const requestData = () => ({
+  type: REQUEST_DATA
+})
+
+export const receiveData = (data) => ({
+  type: RECEIVE_DATA,
+  data: data
+})
+
 export const fetchData = () => {
   return (dispatch) => {
-    const data = {
-      'type': 'FeatureCollection',
-      'features': [ ]
-    }
-    dispatch(updateDataLoading(true))
-    csv()
-      .fromStream(request.get(config.dbUrl))
-      .on('json', (csvRow) => {
-        const [ lat, lon ] = csvRow.location.split(',')
-        data.features.push({
-          'type': 'Feature',
-          'properties': csvRow,
-          'geometry': {
-            'type': 'Point',
-            'coordinates': [
-              lon,
-              lat
-            ]
-          }
-        })
+    dispatch(requestData())
+    return fetch(config.dbUrl)
+      .then(response => response.json())
+      .then(json => {
+        const data = {
+          'type': 'FeatureCollection',
+          'features': _.map(json, (portal) => {
+            const [ lat, lon ] = portal.location.split(',')
+            return {
+              'type': 'Feature',
+              'properties': portal,
+              'geometry': {
+                'type': 'Point',
+                'coordinates': [
+                  lon,
+                  lat
+                ]
+              }
+            }
+          })
+        }
+        dispatch(receiveData(data))
       })
-    .on('done', () => {
-      dispatch(updateData(data))
-      dispatch(updateDataLoading(false))
-    })
   }
 }
-// />
 
 export const updateMenuOpen = (bool) => {
   return { type: UPDATE_MENU_OPEN, data: bool }

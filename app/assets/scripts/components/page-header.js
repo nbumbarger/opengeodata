@@ -1,7 +1,10 @@
 'use strict'
+
 import React from 'react'
-import { updateMenuOpen } from '../actions'
 import PropTypes from 'prop-types'
+
+// Actions
+import { updateMenuOpen } from '../actions'
 
 export class PageHeader extends React.Component {
   constructor (props, context) {
@@ -19,7 +22,7 @@ export class PageHeader extends React.Component {
       <header className='page__header' role='banner' data-hook='header'>
         <div className='inner'>
           <div className='page__headline'>
-           <h1 className='page__title'>
+           <h1 className='page__title heading heading--deco'>
              <a href='/' title='Visit homepage'>OpenGeoData.io</a>
            </h1>
           </div>

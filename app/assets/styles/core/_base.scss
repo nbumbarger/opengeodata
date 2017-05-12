@@ -47,6 +47,7 @@ body {
 }
 
 .page {
+  margin-top: 0.75rem;
   overflow-x: hidden;
 }
 
@@ -209,4 +210,7 @@ table {
 main {
   display: block;
   overflow: hidden;
+}
+.inpage__section {
+  height: calc(100vh - 11.5rem);
 }

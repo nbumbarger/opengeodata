@@ -19,6 +19,8 @@
     "semi-spacing": [2, { "before": false, "after": true }],
     "react/display-name": 1 ,
     "react/jsx-no-duplicate-props": 2,
+    "react/jsx-quotes": 0,
+    "jsx-quotes": [2, "prefer-single"],
     "react/jsx-no-undef": 2,
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,

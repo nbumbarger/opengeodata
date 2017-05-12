@@ -4,7 +4,7 @@
   padding: ($global-spacing * 2) 0;
 }
 
-.copyright {
+.author {
   @include column(12/12);
   @include media(medium-up) {
     @include column(6/12);

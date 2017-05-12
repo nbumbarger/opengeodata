@@ -1,4 +1,5 @@
 'use strict'
+
 import React from 'react'
 import thunkMiddleware from 'redux-thunk'
 import { render } from 'react-dom'

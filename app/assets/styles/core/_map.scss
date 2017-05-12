@@ -11,17 +11,10 @@
   position: absolute !important;
 }
 
-.map__container--preload {
-  height: 650px;
-  width: 1px;
-}
-
 .map__container--inpage {
-  height: calc(100vh - 2rem);
+  position: relative;
+  height: 100%;
   width: 100%;
-  @include media(xsmall-only) {
-    height: 325px;
-  }
   .inner {
     position: relative;
   }
@@ -68,4 +61,19 @@
   stroke: $primary-tint;
   stroke-width: 1.5;
   stroke-opacity: 1;
+}
+
+.map-container--loading {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 50, 1);
+  opacity: 1;
+  z-index: 999;
+  &.fading {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    transition-delay: 0.5s;
+    -webkit-transition-delay: 0.5s;
+  }
 }

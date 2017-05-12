@@ -1,7 +1,7 @@
 .page__header {
   background-color: $base-color;
-    position: relative;
-    z-index: 100000;
+  position: relative;
+  z-index: 100000;
 }
 
 .page__headline {
@@ -11,6 +11,9 @@
 
 .page__title {
   margin-bottom: 0;
+  a {
+    text-decoration: none;
+  }
 }
 
 .page__prime-nav {
@@ -19,7 +22,7 @@
     display: inline-block;
     list-style: none;
     @include media (small-up) {
-      margin: ($global-spacing * 2.75) ($global-spacing * 2) 0 0;
+      margin: ($global-spacing * 1.45) ($global-spacing * 2) 0 0;
     }
     @include media (small-up) {
       &:last-child {
@@ -39,6 +42,7 @@
 
 .browse-menu {
   float: right;
+  margin-top: 0;
   margin-top: $global-spacing/4;
   @include media(small-up) {
     margin-left: 0;
@@ -68,17 +72,17 @@
 .page__prime-nav-title {
   position: absolute;
   color: $tertiary-color;
-  top: 1rem;
+  top: 0.25rem;
   right: 0;
   z-index: 4;
-  font-size: 1rem;
+  font-size: 1.25rem;
   line-height: 1;
   margin: 0;
   padding: ($global-spacing * 1.5) $global-spacing;
   transition: all 0.32s ease 0s;
 
   a {
-    color: $tertiary-color;
+    color: $primary-color;
 
     &, *, &::after {
       display: inline-block;
