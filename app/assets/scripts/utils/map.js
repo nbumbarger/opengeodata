@@ -1,4 +1,5 @@
 'use strict'
+
 import mapboxgl from 'mapbox-gl'
 
 export const setupMap = (container, layerURL) => {

@@ -1,26 +1,28 @@
 'use strict'
+
 import { set } from 'object-path'
 
 import {
-  UPDATE_DATA,
-  UPDATE_DATA_LOADING,
+  REQUEST_DATA,
+  RECEIVE_DATA,
   UPDATE_MENU_OPEN
 } from '../actions'
 
 export const initialState = {
   data: {},
-  dataLoading: false,
+  isFetching: false,
   menuOpen: false
 }
 
 export default (state = initialState, action) => {
   state = Object.assign({}, state)
   switch (action.type) {
-    case UPDATE_DATA:
-      set(state, 'data', action.data)
+    case REQUEST_DATA:
+      set(state, 'isFetching', true)
       break
-    case UPDATE_DATA_LOADING:
-      set(state, 'dataLoading', action.data)
+    case RECEIVE_DATA:
+      set(state, 'isFetching', false)
+      set(state, 'data', action.data)
       break
     case UPDATE_MENU_OPEN:
       set(state, 'menuOpen', action.data)

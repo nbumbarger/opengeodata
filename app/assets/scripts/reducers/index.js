@@ -1,4 +1,5 @@
 'use strict'
+
 import { combineReducers } from 'redux'
 
 import home from './home'
