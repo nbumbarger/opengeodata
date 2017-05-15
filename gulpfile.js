@@ -168,7 +168,7 @@ gulp.task('collecticons', function (done) {
     '--font-name', 'Collecticons',
     '--font-types', 'woff',
     '--style-format', 'sass',
-    '--style-dest', 'app/assets/styles/core/',
+    '--style-dest', 'app/assets/styles/vendor/',
     '--style-name', 'collecticons',
     '--class-name', 'collecticon',
     '--author-name', 'Development Seed',
