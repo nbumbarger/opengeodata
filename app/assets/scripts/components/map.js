@@ -50,9 +50,8 @@ export class Map extends React.Component {
       clusterMaxZoom: 5,
       clusterRadius: 20
     })
-
-    this.map.addLayer(mapLayers.pointsHover)
     this.map.addLayer(mapLayers.points)
+    this.map.addLayer(mapLayers.pointsHover)
     mapLayers.generateHeatmap(this.map)
   }
 
